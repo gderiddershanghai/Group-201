@@ -1,0 +1,10 @@
+transformers
+torch
+tqdm
+pandas
+numpy
+textstat
+sklearn
+xgboost
+pyspellchecker
+language-tool-python
