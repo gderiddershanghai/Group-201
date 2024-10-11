@@ -1,4 +1,5 @@
-/project_name/
+```
+/GROUP-201/
 │
 ├── /data/                   # Data storage
 │   ├── /raw/                 # Raw, unprocessed data (e.g., original essay dataset)
@@ -50,3 +51,4 @@
 ├── requirements.txt          # List of dependencies and libraries required to run the project
 ├── setup.py                  # Script for setting up the project as a package (if applicable)
 └── .gitignore                # Ignoring unnecessary files (e.g., datasets, logs)
+```
