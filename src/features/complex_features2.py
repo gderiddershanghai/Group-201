@@ -108,7 +108,7 @@ class ComplexFeatureExtractor:
         Returns:
         list: A list of embeddings (numpy arrays) for each paragraph in the dataset.
         """
-        embeddings = []
+        embeddings_with_index = []
         model_function = {
             'bert': self.get_bert_embedding,
             'roberta': self.get_roberta_embedding,
@@ -125,7 +125,7 @@ class ComplexFeatureExtractor:
             # Extract embeddings for each paragraph
             for para in paragraphs:
                 embedding = model_function(para)
-                embeddings.append(embedding)
+                embeddings_with_index.append((idx, embedding))  # Store essay index and the paragraph embedding
 
-        return embeddings
+        return embeddings_with_index
 
