@@ -1,8 +1,16 @@
+# Environment and credentials
 .env
 .ai-teacher-390405-789dca4aea21.json
+
+# Data folders
 /data/raw
+
+# Virtual environment
 /venv
+
 # Ignore Python cache files
 __pycache__/
 *.pyc
+
+# Ignore large font file
 /NotoSansCJKsc-hinted.zip
