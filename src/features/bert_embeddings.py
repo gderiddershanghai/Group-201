@@ -103,10 +103,10 @@ class BertFeatureExtractor:
         embeddings = []
 
         for _, row in tqdm(df.iterrows(), total=len(df)):
-            text = row['Essay']  # Paragraph is stored in the 'Essay' column
+            text = row['essay']  # Paragraph is stored in the 'Essay' column
 
             # Extract embedding for the paragraph
             embedding = self.get_bert_embedding(text, embedding_type)
             embeddings.append(embedding)  # Store only the paragraph embedding
 
-        return embeddings
+        return np.array(embeddings).squeeze(axis=1)
