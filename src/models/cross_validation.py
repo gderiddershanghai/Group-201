@@ -34,7 +34,7 @@ class CrossValidation():
             }
         self.param_grids = {
             # "RandomForest": {'n_estimators': [25, 100, 250, 500], 'max_depth': [10, 20, 50], 'max_features': ['sqrt', 0.5]},
-            "SVC": {'kernel': ['rbf', 'linear'],'C': [0.55, 0.75, 1.0, 5.0,750], 'gamma': [1e-4, 1e-3, 5e-3, 0.01]},
+            "SVC": {'kernel': ['rbf'],'C': [0.55, 0.75, 1.0, 5.0,750], 'gamma': [1e-4, 1e-3, 5e-3, 0.01]},
             # "KNN": {'n_neighbors': [3, 5, 7, 11, 25]},
             
             # "SGD": {'alpha': [0.0001, 0.001, 0.01, 0.1], 'penalty': ['l2', 'l1'], 'loss': ['squared_error'], 'learning_rate': ['optimal'], 'max_iter': [1000]},
@@ -100,7 +100,9 @@ class CrossValidation():
                         else:
                             X_train_scaled = self.X_train
                             X_val_scaled = self.X_val
-                        
+                        if model_name == "SVC" and BERT_embedding_type=='class' and pca_status: 
+                            print('skipping - model_name == "SVC" and BERT_embedding_type==class and pca_status')
+                            continue
                         
                         param_grid = self.param_grids[model_name]
 
@@ -116,8 +118,8 @@ class CrossValidation():
                             param_dict = dict(zip(param_names, params))
                             
                             # remove gamma for linear kernel
-                            if model_name == "SVC" and param_dict.get('kernel') == 'linear':
-                                param_dict = {k: v for k, v in param_dict.items() if k != 'gamma'}
+                            # if model_name == "SVC" and param_dict.get('kernel') == 'linear':
+                            #     param_dict = {k: v for k, v in param_dict.items() if k != 'gamma'}
 
 
                             try:
